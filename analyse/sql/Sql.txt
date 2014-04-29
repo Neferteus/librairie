@@ -1,0 +1,1072 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.4
+-- http://www.phpmyadmin.net
+--
+-- Client: localhost
+-- Généré le: Mar 29 Avril 2014 à 08:45
+-- Version du serveur: 5.6.12-log
+-- Version de PHP: 5.4.16
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `librairie`
+--
+CREATE DATABASE IF NOT EXISTS `librairie` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `librairie`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `adresse`
+--
+
+CREATE TABLE IF NOT EXISTS `adresse` (
+  `idAdresse` int(11) NOT NULL AUTO_INCREMENT,
+  `codePostal` varchar(10) NOT NULL,
+  `localite` varchar(50) NOT NULL,
+  `numero` varchar(10) NOT NULL,
+  `rue` varchar(100) NOT NULL,
+  `pays_idPays` int(11) NOT NULL,
+  PRIMARY KEY (`idAdresse`),
+  KEY `FK_o3pshmpp7efsl7igib5pkffr` (`pays_idPays`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `adresse`
+--
+
+INSERT INTO `adresse` (`idAdresse`, `codePostal`, `localite`, `numero`, `rue`, `pays_idPays`) VALUES
+(1, '7000', 'Mons', '1', 'Rue du responsable', 25),
+(2, '15000', 'Istanbul', '159', 'Rue de la Turquie', 226),
+(3, '1', '1', '1', '1', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `auteur`
+--
+
+CREATE TABLE IF NOT EXISTS `auteur` (
+  `idAuteur` int(11) NOT NULL AUTO_INCREMENT,
+  `dateDeces` date DEFAULT NULL,
+  `dateNaissance` date NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `nomAuteur` varchar(50) NOT NULL,
+  `prenomAuteur` varchar(50) NOT NULL,
+  PRIMARY KEY (`idAuteur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `client`
+--
+
+CREATE TABLE IF NOT EXISTS `client` (
+  `id` int(11) NOT NULL,
+  `dateNaissancePersonne` date NOT NULL,
+  `emailPersonne` varchar(100) NOT NULL,
+  `nomPersonne` varchar(50) NOT NULL,
+  `prenomPersonne` varchar(50) NOT NULL,
+  `sexePersonne` char(1) NOT NULL,
+  `telephonePersonne` varchar(20) NOT NULL,
+  `adresse_idAdresse` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_4gwkipvaowcurp34i4yxqk4m0` (`emailPersonne`),
+  KEY `FK_dgge447lhnbfdytxmlwqdtaba` (`adresse_idAdresse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `collection`
+--
+
+CREATE TABLE IF NOT EXISTS `collection` (
+  `idCollection` int(11) NOT NULL AUTO_INCREMENT,
+  `nomCollection` varchar(50) NOT NULL,
+  PRIMARY KEY (`idCollection`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande`
+--
+
+CREATE TABLE IF NOT EXISTS `commande` (
+  `idCommande` int(11) NOT NULL AUTO_INCREMENT,
+  `dateCommande` date NOT NULL,
+  `dateLivraisonDemande` date NOT NULL,
+  `statut` char(1) NOT NULL,
+  `fournisseur_idFournisseur` int(11) NOT NULL,
+  `vendeur_idVendeur` int(11) NOT NULL,
+  PRIMARY KEY (`idCommande`),
+  KEY `FK_jskvpsn1q2p5yaq4wdq4eb2vq` (`fournisseur_idFournisseur`),
+  KEY `FK_qdbsi7bingv308qsm710jcdyl` (`vendeur_idVendeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `counteridpersonne`
+--
+
+CREATE TABLE IF NOT EXISTS `counteridpersonne` (
+  `CounterName` varchar(255) DEFAULT NULL,
+  `CounterValue` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `counteridpersonne`
+--
+
+INSERT INTO `counteridpersonne` (`CounterName`, `CounterValue`) VALUES
+('CUSTOMER_NO', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailcommande`
+--
+
+CREATE TABLE IF NOT EXISTS `detailcommande` (
+  `idDetailCommande` int(11) NOT NULL AUTO_INCREMENT,
+  `prixAchatReelHtva` double NOT NULL,
+  `quantiteCommande` int(11) NOT NULL,
+  `livre_idLivre` int(11) NOT NULL,
+  PRIMARY KEY (`idDetailCommande`),
+  KEY `FK_f6fjdi5jeppdbqi8wqb9m20mv` (`livre_idLivre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailcommande_commande`
+--
+
+CREATE TABLE IF NOT EXISTS `detailcommande_commande` (
+  `detailCommande_idDetailCommande` int(11) NOT NULL,
+  `commande_idCommande` int(11) NOT NULL,
+  PRIMARY KEY (`commande_idCommande`,`detailCommande_idDetailCommande`),
+  KEY `FK_4gy2ew2ntmeea6uomn7sgdqd7` (`commande_idCommande`),
+  KEY `FK_n5au6kpanw6mglka8qwf78pt4` (`detailCommande_idDetailCommande`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detaillivraison`
+--
+
+CREATE TABLE IF NOT EXISTS `detaillivraison` (
+  `idDetailLivraison` int(11) NOT NULL AUTO_INCREMENT,
+  `quantiteLivraison` int(11) NOT NULL,
+  `livre_idLivre` int(11) NOT NULL,
+  PRIMARY KEY (`idDetailLivraison`),
+  KEY `FK_itdectm6x93gproutbwu3fse4` (`livre_idLivre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detaillivraison_livraison`
+--
+
+CREATE TABLE IF NOT EXISTS `detaillivraison_livraison` (
+  `livraison_idLivraison` int(11) NOT NULL,
+  `detailLivraison_idDetailLivraison` int(11) NOT NULL,
+  PRIMARY KEY (`detailLivraison_idDetailLivraison`,`livraison_idLivraison`),
+  KEY `FK_8yqjfkdhj3sqhxjearp3ln5rf` (`detailLivraison_idDetailLivraison`),
+  KEY `FK_hdusvn5hhqc9he9iob2fk201q` (`livraison_idLivraison`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailnotecredit`
+--
+
+CREATE TABLE IF NOT EXISTS `detailnotecredit` (
+  `idDetailNoteCredit` int(11) NOT NULL AUTO_INCREMENT,
+  `prixHtva` double NOT NULL,
+  `quantiteNoteCredit` int(11) NOT NULL,
+  `livre_idLivre` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idDetailNoteCredit`),
+  KEY `FK_foj309uw4i2h0lb6riqrykxa0` (`livre_idLivre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailnotecredit_notecredit`
+--
+
+CREATE TABLE IF NOT EXISTS `detailnotecredit_notecredit` (
+  `noteCredit_idNoteCredit` int(11) NOT NULL,
+  `detailNoteCredit_idDetailNoteCredit` int(11) NOT NULL,
+  PRIMARY KEY (`detailNoteCredit_idDetailNoteCredit`,`noteCredit_idNoteCredit`),
+  KEY `FK_isgvwc1nlicjp8rc65kjodcq5` (`detailNoteCredit_idDetailNoteCredit`),
+  KEY `FK_ggmtc019c9usedsd7qk1778jk` (`noteCredit_idNoteCredit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailrecompense`
+--
+
+CREATE TABLE IF NOT EXISTS `detailrecompense` (
+  `idDetailRecompense` int(11) NOT NULL AUTO_INCREMENT,
+  `annee` int(11) NOT NULL,
+  `auteur_idAuteur` int(11) NOT NULL,
+  PRIMARY KEY (`idDetailRecompense`),
+  KEY `FK_cfn7ap2ok0kumhggy5qcjkbcc` (`auteur_idAuteur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailrecompense_recompense`
+--
+
+CREATE TABLE IF NOT EXISTS `detailrecompense_recompense` (
+  `recompense_idRecompense` int(11) NOT NULL,
+  `detailRecompense_idDetailRecompense` int(11) NOT NULL,
+  PRIMARY KEY (`detailRecompense_idDetailRecompense`,`recompense_idRecompense`),
+  KEY `FK_3f8bddkvb82b48g2n3frymdbj` (`detailRecompense_idDetailRecompense`),
+  KEY `FK_dguidy4cvn8ngjg2fll15k0yy` (`recompense_idRecompense`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `detailvente`
+--
+
+CREATE TABLE IF NOT EXISTS `detailvente` (
+  `idDetailVente` int(11) NOT NULL AUTO_INCREMENT,
+  `prixVenteReelHtva` double NOT NULL,
+  `quantiteVente` int(11) NOT NULL,
+  `livre_idLivre` int(11) NOT NULL,
+  PRIMARY KEY (`idDetailVente`),
+  KEY `FK_d72sj7cusi4h56h1n5raj862r` (`livre_idLivre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `edition`
+--
+
+CREATE TABLE IF NOT EXISTS `edition` (
+  `idEdition` int(11) NOT NULL AUTO_INCREMENT,
+  `nomEdition` varchar(50) NOT NULL,
+  `edition_idAdresse` int(11) NOT NULL,
+  PRIMARY KEY (`idEdition`),
+  KEY `FK_fb6cntl5kip4vw06ymf8xwg61` (`edition_idAdresse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `facture`
+--
+
+CREATE TABLE IF NOT EXISTS `facture` (
+  `idFacture` int(11) NOT NULL AUTO_INCREMENT,
+  `dateFacture` date NOT NULL,
+  `nrFacture` varchar(50) NOT NULL,
+  `fournisseur_idFournisseur` int(11) NOT NULL,
+  PRIMARY KEY (`idFacture`),
+  KEY `FK_br2gmim9on4s8vjlrpus2ta8y` (`fournisseur_idFournisseur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `format`
+--
+
+CREATE TABLE IF NOT EXISTS `format` (
+  `idFormat` int(11) NOT NULL AUTO_INCREMENT,
+  `nomFormat` varchar(20) NOT NULL,
+  PRIMARY KEY (`idFormat`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+
+--
+-- Contenu de la table `format`
+--
+
+INSERT INTO `format` (`idFormat`, `nomFormat`) VALUES
+(1, 'in-plano : carré'),
+(2, 'in-plano : raisin'),
+(3, 'in-plano : jésus'),
+(4, 'in-plano : colombier'),
+(5, 'in-folio : carré'),
+(6, 'in-folio : raisin'),
+(7, 'in-folio : jésus'),
+(8, 'in-folio : colombier'),
+(9, 'in-4 : carré'),
+(10, 'in-4 : raisin'),
+(11, 'in-4 : jésus'),
+(12, 'in-4 : colombier'),
+(13, 'in-6 : carré'),
+(14, 'in-6 : raisin'),
+(15, 'in-6 : jésus'),
+(16, 'in-6 : colombier'),
+(17, 'in-8 : carré'),
+(18, 'in-8 : raisin'),
+(19, 'in-8 : jésus'),
+(20, 'in-8 : colombier'),
+(21, 'in-12 : carré'),
+(22, 'in-12 : raisin'),
+(23, 'in-12 : jésus'),
+(24, 'in-12 : colombier'),
+(25, 'in-16 : raisin'),
+(26, 'in-16 : jésus'),
+(27, 'in-16 : colombier');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fournisseur`
+--
+
+CREATE TABLE IF NOT EXISTS `fournisseur` (
+  `idFournisseur` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `fax` varchar(20) NOT NULL,
+  `formeJuridique` varchar(20) NOT NULL,
+  `nomFournisseur` varchar(50) NOT NULL,
+  `nrTva` varchar(20) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  `fournisseur_idAdresse` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idFournisseur`),
+  UNIQUE KEY `UK_jbgq4kotuud6g548jycag5qwp` (`email`),
+  KEY `FK_jgwv13n1m3fqw77m8ogp86vrf` (`fournisseur_idAdresse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `genre`
+--
+
+CREATE TABLE IF NOT EXISTS `genre` (
+  `idGenre` int(11) NOT NULL AUTO_INCREMENT,
+  `nomGenre` varchar(50) NOT NULL,
+  PRIMARY KEY (`idGenre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+
+--
+-- Contenu de la table `genre`
+--
+
+INSERT INTO `genre` (`idGenre`, `nomGenre`) VALUES
+(1, 'roman courtois'),
+(2, 'roman historique'),
+(3, 'roman épistolaire'),
+(4, 'roman-mémoires'),
+(5, 'roman d''amour'),
+(6, 'roman industriel'),
+(7, 'nouvelle fiction'),
+(8, 'non-fiction'),
+(9, 'non-fiction : true crime'),
+(10, 'roman d''aventures'),
+(11, 'roman d''aventures : roman noir'),
+(12, 'roman d''aventures : roman policier'),
+(13, 'roman d''aventures : roman d''espionnage'),
+(14, 'roman d''aventures : mondes perdus'),
+(15, 'science-fiction'),
+(16, 'fantasy'),
+(17, 'fantastique'),
+(18, 'horreur'),
+(19, 'biographie'),
+(20, 'conte'),
+(21, 'épopée'),
+(22, 'nouvelle'),
+(23, 'nanolittérature'),
+(24, 'témoignage'),
+(25, 'pièce de théâtre'),
+(26, 'bande dessinée'),
+(27, 'comic'),
+(28, 'manga');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livraison`
+--
+
+CREATE TABLE IF NOT EXISTS `livraison` (
+  `idLivraison` int(11) NOT NULL AUTO_INCREMENT,
+  `dateLivraison` date NOT NULL,
+  `facture_idFacture` int(11) NOT NULL,
+  PRIMARY KEY (`idLivraison`),
+  KEY `FK_go27oeql189xgvgoo9wlt4v12` (`facture_idFacture`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livraison_commande`
+--
+
+CREATE TABLE IF NOT EXISTS `livraison_commande` (
+  `livraison_idLivraison` int(11) NOT NULL,
+  `commande_idCommande` int(11) NOT NULL,
+  PRIMARY KEY (`commande_idCommande`,`livraison_idLivraison`),
+  KEY `FK_e3w6j8dmhn29aek7bjddslduv` (`commande_idCommande`),
+  KEY `FK_2ejs8u0l5enp2f90gy8t6muur` (`livraison_idLivraison`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livre`
+--
+
+CREATE TABLE IF NOT EXISTS `livre` (
+  `idLivre` int(11) NOT NULL AUTO_INCREMENT,
+  `anneeSortie` date NOT NULL,
+  `description` longtext NOT NULL,
+  `isbn` bigint(20) NOT NULL,
+  `prixAchatActuelHtva` double NOT NULL,
+  `prixVenteHtva` double NOT NULL,
+  `seuilMin` int(11) NOT NULL,
+  `sousTitre` varchar(100) DEFAULT NULL,
+  `stock` int(11) NOT NULL,
+  `titre` varchar(100) NOT NULL,
+  `collection_idCollection` int(11) DEFAULT NULL,
+  `edition_idEdition` int(11) NOT NULL,
+  `format_idFormat` int(11) NOT NULL,
+  PRIMARY KEY (`idLivre`),
+  UNIQUE KEY `UK_9lix5phlv9fnqt4gsyu0qgb5` (`isbn`),
+  KEY `FK_kphdtnmehc59rxaq6t0vvu986` (`collection_idCollection`),
+  KEY `FK_9tp3teyyumxm6tcut2u04vxvt` (`edition_idEdition`),
+  KEY `FK_c526q32magwicsr30yyf76dyw` (`format_idFormat`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livre_auteur`
+--
+
+CREATE TABLE IF NOT EXISTS `livre_auteur` (
+  `livre_idLivre` int(11) NOT NULL,
+  `auteur_idAuteur` int(11) NOT NULL,
+  PRIMARY KEY (`auteur_idAuteur`,`livre_idLivre`),
+  KEY `FK_3kmgevdd444j7xfgltmyjmn48` (`auteur_idAuteur`),
+  KEY `FK_m3s7dlxubrp2gvqf1gstxie72` (`livre_idLivre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livre_genre`
+--
+
+CREATE TABLE IF NOT EXISTS `livre_genre` (
+  `livre_idLivre` int(11) NOT NULL,
+  `genre_idGenre` int(11) NOT NULL,
+  PRIMARY KEY (`genre_idGenre`,`livre_idLivre`),
+  KEY `FK_s8foa6oj93xmd9cs577juq01` (`genre_idGenre`),
+  KEY `FK_6f5yrvudv959968kdutjcc8mb` (`livre_idLivre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notecredit`
+--
+
+CREATE TABLE IF NOT EXISTS `notecredit` (
+  `idNoteCredit` int(11) NOT NULL AUTO_INCREMENT,
+  `dateNoteCredit` date NOT NULL,
+  `defectueux` tinyint(4) NOT NULL,
+  `invendu` tinyint(4) NOT NULL,
+  `fournisseur_idFournisseur` int(11) NOT NULL,
+  `vendeur_idVendeur` int(11) NOT NULL,
+  PRIMARY KEY (`idNoteCredit`),
+  KEY `FK_ifeqdonvb6ogyjhyb56cx4lyg` (`fournisseur_idFournisseur`),
+  KEY `FK_66y2ajmtad0r2572pfimg50hg` (`vendeur_idVendeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `paiement`
+--
+
+CREATE TABLE IF NOT EXISTS `paiement` (
+  `idPaiement` int(11) NOT NULL AUTO_INCREMENT,
+  `datePaiement` date NOT NULL,
+  `montantVerse` double NOT NULL,
+  `facture_idFacture` int(11) NOT NULL,
+  PRIMARY KEY (`idPaiement`),
+  KEY `FK_byij74g4riqchc6p2lim6v223` (`facture_idFacture`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pays`
+--
+
+CREATE TABLE IF NOT EXISTS `pays` (
+  `idPays` int(11) NOT NULL AUTO_INCREMENT,
+  `codeIsoPays` varchar(10) NOT NULL,
+  `nomPays` varchar(50) NOT NULL,
+  PRIMARY KEY (`idPays`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=239 ;
+
+--
+-- Contenu de la table `pays`
+--
+
+INSERT INTO `pays` (`idPays`, `codeIsoPays`, `nomPays`) VALUES
+(1, 'af', 'afghanistan'),
+(2, 'za', 'afrique du sud'),
+(3, 'al', 'albanie'),
+(4, 'dz', 'algérie'),
+(5, 'de', 'allemagne'),
+(6, 'ad', 'andorre'),
+(7, 'ao', 'angola'),
+(8, 'ai', 'anguilla'),
+(9, 'aq', 'antarctique'),
+(10, 'ag', 'antigua-et-barbuda'),
+(11, 'an', 'antilles néerlandaises'),
+(12, 'sa', 'arabie saoudite'),
+(13, 'ar', 'argentine'),
+(14, 'am', 'arménie'),
+(15, 'aw', 'aruba'),
+(16, 'au', 'australie'),
+(17, 'at', 'autriche'),
+(18, 'az', 'azerbaïdjan'),
+(19, 'bj', 'bénin'),
+(20, 'bs', 'bahamas'),
+(21, 'bh', 'bahreïn'),
+(22, 'bd', 'bangladesh'),
+(23, 'bb', 'barbade'),
+(24, 'pw', 'belau'),
+(25, 'be', 'belgique'),
+(26, 'bz', 'belize'),
+(27, 'bm', 'bermudes'),
+(28, 'bt', 'bhoutan'),
+(29, 'by', 'biélorussie'),
+(30, 'mm', 'birmanie'),
+(31, 'bo', 'bolivie'),
+(32, 'ba', 'bosnie-herzégovine'),
+(33, 'bw', 'botswana'),
+(34, 'br', 'brésil'),
+(35, 'bn', 'brunei'),
+(36, 'bg', 'bulgarie'),
+(37, 'bf', 'burkina faso'),
+(38, 'bi', 'burundi'),
+(39, 'ci', 'côte d''ivoire'),
+(40, 'kh', 'cambodge'),
+(41, 'cm', 'cameroun'),
+(42, 'ca', 'canada'),
+(43, 'cv', 'cap-vert'),
+(44, 'cl', 'chili'),
+(45, 'cn', 'chine'),
+(46, 'cy', 'chypre'),
+(47, 'co', 'colombie'),
+(48, 'km', 'comores'),
+(49, 'cg', 'congo'),
+(50, 'kp', 'corée du nord'),
+(51, 'kr', 'corée du sud'),
+(52, 'cr', 'costa rica'),
+(53, 'hr', 'croatie'),
+(54, 'cu', 'cuba'),
+(55, 'dk', 'danemark'),
+(56, 'dj', 'djibouti'),
+(57, 'dm', 'dominique'),
+(58, 'eg', 'égypte'),
+(59, 'ae', 'émirats arabes unis'),
+(60, 'ec', 'équateur'),
+(61, 'er', 'érythrée'),
+(62, 'es', 'espagne'),
+(63, 'ee', 'estonie'),
+(64, 'us', 'états-unis'),
+(65, 'et', 'éthiopie'),
+(66, 'fi', 'finlande'),
+(67, 'fr', 'france'),
+(68, 'ge', 'géorgie'),
+(69, 'ga', 'gabon'),
+(70, 'gm', 'gambie'),
+(71, 'gh', 'ghana'),
+(72, 'gi', 'gibraltar'),
+(73, 'gr', 'grèce'),
+(74, 'gd', 'grenade'),
+(75, 'gl', 'groenland'),
+(76, 'gp', 'guadeloupe'),
+(77, 'gu', 'guam'),
+(78, 'gt', 'guatemala'),
+(79, 'gn', 'guinée'),
+(80, 'gq', 'guinée équatoriale'),
+(81, 'gw', 'guinée-bissao'),
+(82, 'gy', 'guyana'),
+(83, 'gf', 'guyane française'),
+(84, 'ht', 'haïti'),
+(85, 'hn', 'honduras'),
+(86, 'hk', 'hong kong'),
+(87, 'hu', 'hongrie'),
+(88, 'bv', 'ile bouvet'),
+(89, 'cx', 'ile christmas'),
+(90, 'nf', 'ile norfolk'),
+(91, 'ky', 'iles cayman'),
+(92, 'ck', 'iles cook'),
+(93, 'fo', 'iles féroé'),
+(94, 'fk', 'iles falkland'),
+(95, 'fj', 'iles fidji'),
+(96, 'gs', 'iles géorgie du sud et sandwich du sud'),
+(97, 'hm', 'iles heard et mcdonald'),
+(98, 'mh', 'iles marshall'),
+(99, 'pn', 'iles pitcairn'),
+(100, 'sb', 'iles salomon'),
+(101, 'sj', 'iles svalbard et jan mayen'),
+(102, 'tc', 'iles turks-et-caicos'),
+(103, 'vi', 'iles vierges américaines'),
+(104, 'vg', 'iles vierges britanniques'),
+(105, 'cc', 'iles des cocos (keeling)'),
+(106, 'um', 'iles mineures éloignées des états-unis'),
+(107, 'in', 'inde'),
+(108, 'id', 'indonésie'),
+(109, 'ir', 'iran'),
+(110, 'iq', 'iraq'),
+(111, 'ie', 'irlande'),
+(112, 'is', 'islande'),
+(113, 'il', 'israël'),
+(114, 'it', 'italie'),
+(115, 'jm', 'jamaïque'),
+(116, 'jp', 'japon'),
+(117, 'jo', 'jordanie'),
+(118, 'kz', 'kazakhstan'),
+(119, 'ke', 'kenya'),
+(120, 'kg', 'kirghizistan'),
+(121, 'ki', 'kiribati'),
+(122, 'kw', 'koweït'),
+(123, 'la', 'laos'),
+(124, 'ls', 'lesotho'),
+(125, 'lv', 'lettonie'),
+(126, 'lb', 'liban'),
+(127, 'lr', 'liberia'),
+(128, 'ly', 'libye'),
+(129, 'li', 'liechtenstein'),
+(130, 'lt', 'lituanie'),
+(131, 'lu', 'luxembourg'),
+(132, 'mo', 'macao'),
+(133, 'mg', 'madagascar'),
+(134, 'my', 'malaisie'),
+(135, 'mw', 'malawi'),
+(136, 'mv', 'maldives'),
+(137, 'ml', 'mali'),
+(138, 'mt', 'malte'),
+(139, 'mp', 'mariannes du nord'),
+(140, 'ma', 'maroc'),
+(141, 'mq', 'martinique'),
+(142, 'mu', 'maurice'),
+(143, 'mr', 'mauritanie'),
+(144, 'yt', 'mayotte'),
+(145, 'mx', 'mexique'),
+(146, 'fm', 'micronésie'),
+(147, 'md', 'moldavie'),
+(148, 'mc', 'monaco'),
+(149, 'mn', 'mongolie'),
+(150, 'ms', 'montserrat'),
+(151, 'mz', 'mozambique'),
+(152, 'np', 'népal'),
+(153, 'na', 'namibie'),
+(154, 'nr', 'nauru'),
+(155, 'ni', 'nicaragua'),
+(156, 'ne', 'niger'),
+(157, 'ng', 'nigeria'),
+(158, 'nu', 'nioué'),
+(159, 'no', 'norvège'),
+(160, 'nc', 'nouvelle-calédonie'),
+(161, 'nz', 'nouvelle-zélande'),
+(162, 'om', 'oman'),
+(163, 'ug', 'ouganda'),
+(164, 'uz', 'ouzbékistan'),
+(165, 'pe', 'pérou'),
+(166, 'pk', 'pakistan'),
+(167, 'pa', 'panama'),
+(168, 'pg', 'papouasie-nouvelle-guinée'),
+(169, 'py', 'paraguay'),
+(170, 'nl', 'pays-bas'),
+(171, 'ph', 'philippines'),
+(172, 'pl', 'pologne'),
+(173, 'pf', 'polynésie française'),
+(174, 'pr', 'porto rico'),
+(175, 'pt', 'portugal'),
+(176, 'qa', 'qatar'),
+(177, 'cf', 'république centrafricaine'),
+(178, 'cd', 'république démocratique du congo'),
+(179, 'do', 'république dominicaine'),
+(180, 'cz', 'république tchèque'),
+(181, 're', 'réunion'),
+(182, 'ro', 'roumanie'),
+(183, 'gb', 'royaume-uni'),
+(184, 'ru', 'russie'),
+(185, 'rw', 'rwanda'),
+(186, 'sn', 'sénégal'),
+(187, 'eh', 'sahara occidental'),
+(188, 'kn', 'saint-christophe-et-niévès'),
+(189, 'sm', 'saint-marin'),
+(190, 'pm', 'saint-pierre-et-miquelon'),
+(191, 'va', 'saint-siège'),
+(192, 'vc', 'saint-vincent-et-les-grenadines'),
+(193, 'sh', 'sainte-hélène'),
+(194, 'lc', 'sainte-lucie'),
+(195, 'sv', 'salvador'),
+(196, 'ws', 'samoa'),
+(197, 'as', 'samoa américaines'),
+(198, 'st', 'sao tomé-et-principe'),
+(199, 'sc', 'seychelles'),
+(200, 'sl', 'sierra leone'),
+(201, 'sg', 'singapour'),
+(202, 'si', 'slovénie'),
+(203, 'sk', 'slovaquie'),
+(204, 'so', 'somalie'),
+(205, 'sd', 'soudan'),
+(206, 'lk', 'sri lanka'),
+(207, 'se', 'suède'),
+(208, 'ch', 'suisse'),
+(209, 'sr', 'suriname'),
+(210, 'sz', 'swaziland'),
+(211, 'sy', 'syrie'),
+(212, 'tw', 'taïwan'),
+(213, 'tj', 'tadjikistan'),
+(214, 'tz', 'tanzanie'),
+(215, 'td', 'tchad'),
+(216, 'tf', 'terres australes françaises'),
+(217, 'io', 'territoire britannique de l''océan indien'),
+(218, 'th', 'thaïlande'),
+(219, 'tl', 'timor oriental'),
+(220, 'tg', 'togo'),
+(221, 'tk', 'tokélaou'),
+(222, 'to', 'tonga'),
+(223, 'tt', 'trinité-et-tobago'),
+(224, 'tn', 'tunisie'),
+(225, 'tm', 'turkménistan'),
+(226, 'tr', 'turquie'),
+(227, 'tv', 'tuvalu'),
+(228, 'ua', 'ukraine'),
+(229, 'uy', 'uruguay'),
+(230, 'vu', 'vanuatu'),
+(231, 've', 'venezuela'),
+(232, 'vn', 'viêt nam'),
+(233, 'wf', 'wallis-et-futuna'),
+(234, 'ye', 'yémen'),
+(235, 'yu', 'yougoslavie'),
+(236, 'zm', 'zambie'),
+(237, 'zw', 'zimbabwe'),
+(238, 'mk', 'ex-république yougoslave de macédoine');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `personne`
+--
+
+CREATE TABLE IF NOT EXISTS `personne` (
+  `id` int(11) NOT NULL,
+  `dateNaissancePersonne` date NOT NULL,
+  `emailPersonne` varchar(100) NOT NULL,
+  `nomPersonne` varchar(50) NOT NULL,
+  `prenomPersonne` varchar(50) NOT NULL,
+  `sexePersonne` char(1) NOT NULL,
+  `telephonePersonne` varchar(20) NOT NULL,
+  `adresse_idAdresse` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_dciah7j2usno96koji7pn5lej` (`emailPersonne`),
+  KEY `FK_7bxe7asbda198iexna88tmi02` (`adresse_idAdresse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `recompense`
+--
+
+CREATE TABLE IF NOT EXISTS `recompense` (
+  `idRecompense` int(11) NOT NULL AUTO_INCREMENT,
+  `nomRecompense` varchar(50) NOT NULL,
+  PRIMARY KEY (`idRecompense`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `remise`
+--
+
+CREATE TABLE IF NOT EXISTS `remise` (
+  `idRemise` int(11) NOT NULL AUTO_INCREMENT,
+  `dateDebutRemise` date NOT NULL,
+  `dateFinRemise` date NOT NULL,
+  `dateRemise` date NOT NULL,
+  `montantRemise` double NOT NULL,
+  `nbrAchat` int(11) NOT NULL,
+  `client_idClient` int(11) NOT NULL,
+  PRIMARY KEY (`idRemise`),
+  KEY `FK_9hu4jans70b98y8jqrcfcai0q` (`client_idClient`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vendeur`
+--
+
+CREATE TABLE IF NOT EXISTS `vendeur` (
+  `id` int(11) NOT NULL,
+  `dateNaissancePersonne` date NOT NULL,
+  `emailPersonne` varchar(100) NOT NULL,
+  `nomPersonne` varchar(50) NOT NULL,
+  `prenomPersonne` varchar(50) NOT NULL,
+  `sexePersonne` char(1) NOT NULL,
+  `telephonePersonne` varchar(20) NOT NULL,
+  `adresse_idAdresse` int(11) NOT NULL,
+  `login` varchar(12) NOT NULL,
+  `password` varchar(44) NOT NULL,
+  `responsable` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_7kdv8ssqinkpdhfuqmqd2xyd3` (`login`,`password`),
+  UNIQUE KEY `UK_pyerxw288ayniq4rqfk6pu8e6` (`emailPersonne`),
+  KEY `FK_c9w5ssmxhww6m06l4h3ym9aid` (`adresse_idAdresse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `vendeur`
+--
+
+INSERT INTO `vendeur` (`id`, `dateNaissancePersonne`, `emailPersonne`, `nomPersonne`, `prenomPersonne`, `sexePersonne`, `telephonePersonne`, `adresse_idAdresse`, `login`, `password`, `responsable`) VALUES
+(1, '2014-04-19', 'nobody@gmail.be', 'Nobody', 'Nobody', 'H', '0147/12.45.78', 1, 'nobody', '365EC17A675F3273BC16C74761AD83F2CF07C59A', 1),
+(2, '2014-04-19', 'aydin.emral@gmail.be', 'Aydin', 'Emral', 'H', '0369/23.56.89', 2, 'emral', '64C0BBAB8D6BB2C502221F8719BCD891C8238F89', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vente`
+--
+
+CREATE TABLE IF NOT EXISTS `vente` (
+  `idVente` int(11) NOT NULL AUTO_INCREMENT,
+  `dateVente` date NOT NULL,
+  `modePaiement` char(1) NOT NULL,
+  `nrVente` varchar(50) NOT NULL,
+  `client_idClient` int(11) NOT NULL,
+  `vendeur_idVendeur` int(11) NOT NULL,
+  PRIMARY KEY (`idVente`),
+  KEY `FK_b1rxd1ova3y2ksh4bunbcquro` (`client_idClient`),
+  KEY `FK_alpwpymcv8xxqljtu1ek7vv05` (`vendeur_idVendeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vente_detailvente`
+--
+
+CREATE TABLE IF NOT EXISTS `vente_detailvente` (
+  `vente_idVente` int(11) NOT NULL,
+  `detailVente_idDetailVente` int(11) NOT NULL,
+  PRIMARY KEY (`detailVente_idDetailVente`,`vente_idVente`),
+  KEY `FK_gd4ub21i86w538ypdvlq9js5d` (`detailVente_idDetailVente`),
+  KEY `FK_mxo51fed99okss3cckw4ll73v` (`vente_idVente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `adresse`
+--
+ALTER TABLE `adresse`
+  ADD CONSTRAINT `FK_o3pshmpp7efsl7igib5pkffr` FOREIGN KEY (`pays_idPays`) REFERENCES `pays` (`idPays`);
+
+--
+-- Contraintes pour la table `client`
+--
+ALTER TABLE `client`
+  ADD CONSTRAINT `FK_dgge447lhnbfdytxmlwqdtaba` FOREIGN KEY (`adresse_idAdresse`) REFERENCES `adresse` (`idAdresse`);
+
+--
+-- Contraintes pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD CONSTRAINT `FK_jskvpsn1q2p5yaq4wdq4eb2vq` FOREIGN KEY (`fournisseur_idFournisseur`) REFERENCES `fournisseur` (`idFournisseur`),
+  ADD CONSTRAINT `FK_qdbsi7bingv308qsm710jcdyl` FOREIGN KEY (`vendeur_idVendeur`) REFERENCES `vendeur` (`id`);
+
+--
+-- Contraintes pour la table `detailcommande`
+--
+ALTER TABLE `detailcommande`
+  ADD CONSTRAINT `FK_f6fjdi5jeppdbqi8wqb9m20mv` FOREIGN KEY (`livre_idLivre`) REFERENCES `livre` (`idLivre`);
+
+--
+-- Contraintes pour la table `detailcommande_commande`
+--
+ALTER TABLE `detailcommande_commande`
+  ADD CONSTRAINT `FK_4gy2ew2ntmeea6uomn7sgdqd7` FOREIGN KEY (`commande_idCommande`) REFERENCES `commande` (`idCommande`),
+  ADD CONSTRAINT `FK_n5au6kpanw6mglka8qwf78pt4` FOREIGN KEY (`detailCommande_idDetailCommande`) REFERENCES `detailcommande` (`idDetailCommande`);
+
+--
+-- Contraintes pour la table `detaillivraison`
+--
+ALTER TABLE `detaillivraison`
+  ADD CONSTRAINT `FK_itdectm6x93gproutbwu3fse4` FOREIGN KEY (`livre_idLivre`) REFERENCES `livre` (`idLivre`);
+
+--
+-- Contraintes pour la table `detaillivraison_livraison`
+--
+ALTER TABLE `detaillivraison_livraison`
+  ADD CONSTRAINT `FK_8yqjfkdhj3sqhxjearp3ln5rf` FOREIGN KEY (`detailLivraison_idDetailLivraison`) REFERENCES `detaillivraison` (`idDetailLivraison`),
+  ADD CONSTRAINT `FK_hdusvn5hhqc9he9iob2fk201q` FOREIGN KEY (`livraison_idLivraison`) REFERENCES `livraison` (`idLivraison`);
+
+--
+-- Contraintes pour la table `detailnotecredit`
+--
+ALTER TABLE `detailnotecredit`
+  ADD CONSTRAINT `FK_foj309uw4i2h0lb6riqrykxa0` FOREIGN KEY (`livre_idLivre`) REFERENCES `livre` (`idLivre`);
+
+--
+-- Contraintes pour la table `detailnotecredit_notecredit`
+--
+ALTER TABLE `detailnotecredit_notecredit`
+  ADD CONSTRAINT `FK_ggmtc019c9usedsd7qk1778jk` FOREIGN KEY (`noteCredit_idNoteCredit`) REFERENCES `notecredit` (`idNoteCredit`),
+  ADD CONSTRAINT `FK_isgvwc1nlicjp8rc65kjodcq5` FOREIGN KEY (`detailNoteCredit_idDetailNoteCredit`) REFERENCES `detailnotecredit` (`idDetailNoteCredit`);
+
+--
+-- Contraintes pour la table `detailrecompense`
+--
+ALTER TABLE `detailrecompense`
+  ADD CONSTRAINT `FK_cfn7ap2ok0kumhggy5qcjkbcc` FOREIGN KEY (`auteur_idAuteur`) REFERENCES `auteur` (`idAuteur`);
+
+--
+-- Contraintes pour la table `detailrecompense_recompense`
+--
+ALTER TABLE `detailrecompense_recompense`
+  ADD CONSTRAINT `FK_3f8bddkvb82b48g2n3frymdbj` FOREIGN KEY (`detailRecompense_idDetailRecompense`) REFERENCES `detailrecompense` (`idDetailRecompense`),
+  ADD CONSTRAINT `FK_dguidy4cvn8ngjg2fll15k0yy` FOREIGN KEY (`recompense_idRecompense`) REFERENCES `recompense` (`idRecompense`);
+
+--
+-- Contraintes pour la table `detailvente`
+--
+ALTER TABLE `detailvente`
+  ADD CONSTRAINT `FK_d72sj7cusi4h56h1n5raj862r` FOREIGN KEY (`livre_idLivre`) REFERENCES `livre` (`idLivre`);
+
+--
+-- Contraintes pour la table `edition`
+--
+ALTER TABLE `edition`
+  ADD CONSTRAINT `FK_fb6cntl5kip4vw06ymf8xwg61` FOREIGN KEY (`edition_idAdresse`) REFERENCES `adresse` (`idAdresse`);
+
+--
+-- Contraintes pour la table `facture`
+--
+ALTER TABLE `facture`
+  ADD CONSTRAINT `FK_br2gmim9on4s8vjlrpus2ta8y` FOREIGN KEY (`fournisseur_idFournisseur`) REFERENCES `fournisseur` (`idFournisseur`);
+
+--
+-- Contraintes pour la table `fournisseur`
+--
+ALTER TABLE `fournisseur`
+  ADD CONSTRAINT `FK_jgwv13n1m3fqw77m8ogp86vrf` FOREIGN KEY (`fournisseur_idAdresse`) REFERENCES `adresse` (`idAdresse`);
+
+--
+-- Contraintes pour la table `livraison`
+--
+ALTER TABLE `livraison`
+  ADD CONSTRAINT `FK_go27oeql189xgvgoo9wlt4v12` FOREIGN KEY (`facture_idFacture`) REFERENCES `facture` (`idFacture`);
+
+--
+-- Contraintes pour la table `livraison_commande`
+--
+ALTER TABLE `livraison_commande`
+  ADD CONSTRAINT `FK_2ejs8u0l5enp2f90gy8t6muur` FOREIGN KEY (`livraison_idLivraison`) REFERENCES `livraison` (`idLivraison`),
+  ADD CONSTRAINT `FK_e3w6j8dmhn29aek7bjddslduv` FOREIGN KEY (`commande_idCommande`) REFERENCES `commande` (`idCommande`);
+
+--
+-- Contraintes pour la table `livre`
+--
+ALTER TABLE `livre`
+  ADD CONSTRAINT `FK_9tp3teyyumxm6tcut2u04vxvt` FOREIGN KEY (`edition_idEdition`) REFERENCES `edition` (`idEdition`),
+  ADD CONSTRAINT `FK_c526q32magwicsr30yyf76dyw` FOREIGN KEY (`format_idFormat`) REFERENCES `format` (`idFormat`),
+  ADD CONSTRAINT `FK_kphdtnmehc59rxaq6t0vvu986` FOREIGN KEY (`collection_idCollection`) REFERENCES `collection` (`idCollection`);
+
+--
+-- Contraintes pour la table `livre_auteur`
+--
+ALTER TABLE `livre_auteur`
+  ADD CONSTRAINT `FK_3kmgevdd444j7xfgltmyjmn48` FOREIGN KEY (`auteur_idAuteur`) REFERENCES `auteur` (`idAuteur`),
+  ADD CONSTRAINT `FK_m3s7dlxubrp2gvqf1gstxie72` FOREIGN KEY (`livre_idLivre`) REFERENCES `livre` (`idLivre`);
+
+--
+-- Contraintes pour la table `livre_genre`
+--
+ALTER TABLE `livre_genre`
+  ADD CONSTRAINT `FK_6f5yrvudv959968kdutjcc8mb` FOREIGN KEY (`livre_idLivre`) REFERENCES `livre` (`idLivre`),
+  ADD CONSTRAINT `FK_s8foa6oj93xmd9cs577juq01` FOREIGN KEY (`genre_idGenre`) REFERENCES `genre` (`idGenre`);
+
+--
+-- Contraintes pour la table `notecredit`
+--
+ALTER TABLE `notecredit`
+  ADD CONSTRAINT `FK_66y2ajmtad0r2572pfimg50hg` FOREIGN KEY (`vendeur_idVendeur`) REFERENCES `vendeur` (`id`),
+  ADD CONSTRAINT `FK_ifeqdonvb6ogyjhyb56cx4lyg` FOREIGN KEY (`fournisseur_idFournisseur`) REFERENCES `fournisseur` (`idFournisseur`);
+
+--
+-- Contraintes pour la table `paiement`
+--
+ALTER TABLE `paiement`
+  ADD CONSTRAINT `FK_byij74g4riqchc6p2lim6v223` FOREIGN KEY (`facture_idFacture`) REFERENCES `facture` (`idFacture`);
+
+--
+-- Contraintes pour la table `personne`
+--
+ALTER TABLE `personne`
+  ADD CONSTRAINT `FK_7bxe7asbda198iexna88tmi02` FOREIGN KEY (`adresse_idAdresse`) REFERENCES `adresse` (`idAdresse`);
+
+--
+-- Contraintes pour la table `remise`
+--
+ALTER TABLE `remise`
+  ADD CONSTRAINT `FK_9hu4jans70b98y8jqrcfcai0q` FOREIGN KEY (`client_idClient`) REFERENCES `client` (`id`);
+
+--
+-- Contraintes pour la table `vendeur`
+--
+ALTER TABLE `vendeur`
+  ADD CONSTRAINT `FK_c9w5ssmxhww6m06l4h3ym9aid` FOREIGN KEY (`adresse_idAdresse`) REFERENCES `adresse` (`idAdresse`);
+
+--
+-- Contraintes pour la table `vente`
+--
+ALTER TABLE `vente`
+  ADD CONSTRAINT `FK_alpwpymcv8xxqljtu1ek7vv05` FOREIGN KEY (`vendeur_idVendeur`) REFERENCES `vendeur` (`id`),
+  ADD CONSTRAINT `FK_b1rxd1ova3y2ksh4bunbcquro` FOREIGN KEY (`client_idClient`) REFERENCES `client` (`id`);
+
+--
+-- Contraintes pour la table `vente_detailvente`
+--
+ALTER TABLE `vente_detailvente`
+  ADD CONSTRAINT `FK_gd4ub21i86w538ypdvlq9js5d` FOREIGN KEY (`detailVente_idDetailVente`) REFERENCES `detailvente` (`idDetailVente`),
+  ADD CONSTRAINT `FK_mxo51fed99okss3cckw4ll73v` FOREIGN KEY (`vente_idVente`) REFERENCES `vente` (`idVente`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
