@@ -1,0 +1,963 @@
+mai 01, 2014 8:07:21 AM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+mai 01, 2014 8:07:21 AM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.2.8.Final}
+mai 01, 2014 8:07:21 AM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+mai 01, 2014 8:07:21 AM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+mai 01, 2014 8:07:21 AM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: hibernate.cfg.xml
+mai 01, 2014 8:07:21 AM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: hibernate.cfg.xml
+mai 01, 2014 8:07:22 AM org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+mai 01, 2014 8:07:22 AM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+mai 01, 2014 8:07:23 AM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+mai 01, 2014 8:07:23 AM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+mai 01, 2014 8:07:23 AM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+mai 01, 2014 8:07:23 AM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost/librairie]
+mai 01, 2014 8:07:23 AM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+mai 01, 2014 8:07:24 AM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+mai 01, 2014 8:07:25 AM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+mai 01, 2014 8:07:26 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport execute
+INFO: HHH000227: Running hbm2ddl schema export
+Hibernate: 
+    alter table librairie.adresse 
+        drop 
+        foreign key FK_o3pshmpp7efsl7igib5pkffr
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.adresse drop foreign key FK_o3pshmpp7efsl7igib5pkffr
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.adresse' doesn't exist
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.client drop foreign key FK_dgge447lhnbfdytxmlwqdtaba
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.client' doesn't exist
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.commande drop foreign key FK_jskvpsn1q2p5yaq4wdq4eb2vq
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.commande' doesn't exist
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.commande drop foreign key FK_qdbsi7bingv308qsm710jcdyl
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.commande' doesn't exist
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailCommande drop foreign key FK_f6fjdi5jeppdbqi8wqb9m20mv
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailcommande' doesn't exist
+Hibernate: 
+    alter table librairie.client 
+        drop 
+        foreign key FK_dgge447lhnbfdytxmlwqdtaba
+Hibernate: 
+    alter table librairie.commande 
+        drop 
+        foreign key FK_jskvpsn1q2p5yaq4wdq4eb2vq
+Hibernate: 
+    alter table librairie.commande 
+        drop 
+        foreign key FK_qdbsi7bingv308qsm710jcdyl
+Hibernate: 
+    alter table librairie.detailCommande 
+        drop 
+        foreign key FK_f6fjdi5jeppdbqi8wqb9m20mv
+Hibernate: 
+    alter table librairie.detailCommande_commande 
+        drop 
+        foreign key FK_4gy2ew2ntmeea6uomn7sgdqd7
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailCommande_commande drop foreign key FK_4gy2ew2ntmeea6uomn7sgdqd7
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailcommande_commande' doesn't exist
+Hibernate: 
+    alter table librairie.detailCommande_commande 
+        drop 
+        foreign key FK_n5au6kpanw6mglka8qwf78pt4
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailCommande_commande drop foreign key FK_n5au6kpanw6mglka8qwf78pt4
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailcommande_commande' doesn't exist
+Hibernate: 
+    alter table librairie.detailLivraison 
+        drop 
+        foreign key FK_itdectm6x93gproutbwu3fse4
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailLivraison drop foreign key FK_itdectm6x93gproutbwu3fse4
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detaillivraison' doesn't exist
+Hibernate: 
+    alter table librairie.detailLivraison_livraison 
+        drop 
+        foreign key FK_8yqjfkdhj3sqhxjearp3ln5rf
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailLivraison_livraison drop foreign key FK_8yqjfkdhj3sqhxjearp3ln5rf
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detaillivraison_livraison' doesn't exist
+Hibernate: 
+    alter table librairie.detailLivraison_livraison 
+        drop 
+        foreign key FK_hdusvn5hhqc9he9iob2fk201q
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailLivraison_livraison drop foreign key FK_hdusvn5hhqc9he9iob2fk201q
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detaillivraison_livraison' doesn't exist
+Hibernate: 
+    alter table librairie.detailNoteCredit 
+        drop 
+        foreign key FK_foj309uw4i2h0lb6riqrykxa0
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailNoteCredit drop foreign key FK_foj309uw4i2h0lb6riqrykxa0
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailnotecredit' doesn't exist
+Hibernate: 
+    alter table librairie.detailNoteCredit_noteCredit 
+        drop 
+        foreign key FK_isgvwc1nlicjp8rc65kjodcq5
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailNoteCredit_noteCredit drop foreign key FK_isgvwc1nlicjp8rc65kjodcq5
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailnotecredit_notecredit' doesn't exist
+Hibernate: 
+    alter table librairie.detailNoteCredit_noteCredit 
+        drop 
+        foreign key FK_ggmtc019c9usedsd7qk1778jk
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailNoteCredit_noteCredit drop foreign key FK_ggmtc019c9usedsd7qk1778jk
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailnotecredit_notecredit' doesn't exist
+Hibernate: 
+    alter table librairie.detailRecompense 
+        drop 
+        foreign key FK_cfn7ap2ok0kumhggy5qcjkbcc
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailRecompense drop foreign key FK_cfn7ap2ok0kumhggy5qcjkbcc
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailrecompense' doesn't exist
+Hibernate: 
+    alter table librairie.detailRecompense_recompense 
+        drop 
+        foreign key FK_3f8bddkvb82b48g2n3frymdbj
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailRecompense_recompense drop foreign key FK_3f8bddkvb82b48g2n3frymdbj
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailrecompense_recompense' doesn't exist
+Hibernate: 
+    alter table librairie.detailRecompense_recompense 
+        drop 
+        foreign key FK_dguidy4cvn8ngjg2fll15k0yy
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailRecompense_recompense drop foreign key FK_dguidy4cvn8ngjg2fll15k0yy
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailrecompense_recompense' doesn't exist
+Hibernate: 
+    alter table librairie.detailVente 
+        drop 
+        foreign key FK_d72sj7cusi4h56h1n5raj862r
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.detailVente drop foreign key FK_d72sj7cusi4h56h1n5raj862r
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.detailvente' doesn't exist
+Hibernate: 
+    alter table librairie.edition 
+        drop 
+        foreign key FK_fb6cntl5kip4vw06ymf8xwg61
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.edition drop foreign key FK_fb6cntl5kip4vw06ymf8xwg61
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.edition' doesn't exist
+Hibernate: 
+    alter table librairie.facture 
+        drop 
+        foreign key FK_br2gmim9on4s8vjlrpus2ta8y
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.facture drop foreign key FK_br2gmim9on4s8vjlrpus2ta8y
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.facture' doesn't exist
+Hibernate: 
+    alter table librairie.fournisseur 
+        drop 
+        foreign key FK_jgwv13n1m3fqw77m8ogp86vrf
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.fournisseur drop foreign key FK_jgwv13n1m3fqw77m8ogp86vrf
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.fournisseur' doesn't exist
+Hibernate: 
+    alter table librairie.livraison 
+        drop 
+        foreign key FK_go27oeql189xgvgoo9wlt4v12
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livraison drop foreign key FK_go27oeql189xgvgoo9wlt4v12
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livraison' doesn't exist
+Hibernate: 
+    alter table librairie.livraison_commande 
+        drop 
+        foreign key FK_e3w6j8dmhn29aek7bjddslduv
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livraison_commande drop foreign key FK_e3w6j8dmhn29aek7bjddslduv
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livraison_commande' doesn't exist
+Hibernate: 
+    alter table librairie.livraison_commande 
+        drop 
+        foreign key FK_2ejs8u0l5enp2f90gy8t6muur
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livraison_commande drop foreign key FK_2ejs8u0l5enp2f90gy8t6muur
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livraison_commande' doesn't exist
+Hibernate: 
+    alter table librairie.livre 
+        drop 
+        foreign key FK_kphdtnmehc59rxaq6t0vvu986
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livre drop foreign key FK_kphdtnmehc59rxaq6t0vvu986
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livre' doesn't exist
+Hibernate: 
+    alter table librairie.livre 
+        drop 
+        foreign key FK_9tp3teyyumxm6tcut2u04vxvt
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livre drop foreign key FK_9tp3teyyumxm6tcut2u04vxvt
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livre' doesn't exist
+Hibernate: 
+    alter table librairie.livre 
+        drop 
+        foreign key FK_c526q32magwicsr30yyf76dyw
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livre drop foreign key FK_c526q32magwicsr30yyf76dyw
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livre' doesn't exist
+Hibernate: 
+    alter table librairie.livre_auteur 
+        drop 
+        foreign key FK_3kmgevdd444j7xfgltmyjmn48
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livre_auteur drop foreign key FK_3kmgevdd444j7xfgltmyjmn48
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livre_auteur' doesn't exist
+Hibernate: 
+    alter table librairie.livre_auteur 
+        drop 
+        foreign key FK_m3s7dlxubrp2gvqf1gstxie72
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livre_auteur drop foreign key FK_m3s7dlxubrp2gvqf1gstxie72
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livre_auteur' doesn't exist
+Hibernate: 
+    alter table librairie.livre_genre 
+        drop 
+        foreign key FK_s8foa6oj93xmd9cs577juq01
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livre_genre drop foreign key FK_s8foa6oj93xmd9cs577juq01
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livre_genre' doesn't exist
+Hibernate: 
+    alter table librairie.livre_genre 
+        drop 
+        foreign key FK_6f5yrvudv959968kdutjcc8mb
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.livre_genre drop foreign key FK_6f5yrvudv959968kdutjcc8mb
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.livre_genre' doesn't exist
+Hibernate: 
+    alter table librairie.noteCredit 
+        drop 
+        foreign key FK_ifeqdonvb6ogyjhyb56cx4lyg
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.noteCredit drop foreign key FK_ifeqdonvb6ogyjhyb56cx4lyg
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.notecredit' doesn't exist
+Hibernate: 
+    alter table librairie.noteCredit 
+        drop 
+        foreign key FK_66y2ajmtad0r2572pfimg50hg
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.noteCredit drop foreign key FK_66y2ajmtad0r2572pfimg50hg
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.notecredit' doesn't exist
+Hibernate: 
+    alter table librairie.paiement 
+        drop 
+        foreign key FK_byij74g4riqchc6p2lim6v223
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.paiement drop foreign key FK_byij74g4riqchc6p2lim6v223
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.paiement' doesn't exist
+Hibernate: 
+    alter table librairie.personne 
+        drop 
+        foreign key FK_7bxe7asbda198iexna88tmi02
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.personne drop foreign key FK_7bxe7asbda198iexna88tmi02
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.personne' doesn't exist
+Hibernate: 
+    alter table librairie.remise 
+        drop 
+        foreign key FK_9hu4jans70b98y8jqrcfcai0q
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.remise drop foreign key FK_9hu4jans70b98y8jqrcfcai0q
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.remise' doesn't exist
+Hibernate: 
+    alter table librairie.vendeur 
+        drop 
+        foreign key FK_c9w5ssmxhww6m06l4h3ym9aid
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.vendeur drop foreign key FK_c9w5ssmxhww6m06l4h3ym9aid
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.vendeur' doesn't exist
+Hibernate: 
+    alter table librairie.vente 
+        drop 
+        foreign key FK_b1rxd1ova3y2ksh4bunbcquro
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.vente drop foreign key FK_b1rxd1ova3y2ksh4bunbcquro
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.vente' doesn't exist
+Hibernate: 
+    alter table librairie.vente 
+        drop 
+        foreign key FK_alpwpymcv8xxqljtu1ek7vv05
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.vente drop foreign key FK_alpwpymcv8xxqljtu1ek7vv05
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.vente' doesn't exist
+Hibernate: 
+    alter table librairie.vente_detailVente 
+        drop 
+        foreign key FK_gd4ub21i86w538ypdvlq9js5d
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.vente_detailVente drop foreign key FK_gd4ub21i86w538ypdvlq9js5d
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.vente_detailvente' doesn't exist
+Hibernate: 
+    alter table librairie.vente_detailVente 
+        drop 
+        foreign key FK_mxo51fed99okss3cckw4ll73v
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: HHH000389: Unsuccessful: alter table librairie.vente_detailVente drop foreign key FK_mxo51fed99okss3cckw4ll73v
+mai 01, 2014 8:07:28 AM org.hibernate.tool.hbm2ddl.SchemaExport perform
+ERROR: Table 'librairie.vente_detailvente' doesn't exist
+Hibernate: 
+    drop table if exists librairie.adresse
+Hibernate: 
+    drop table if exists librairie.auteur
+Hibernate: 
+    drop table if exists librairie.client
+Hibernate: 
+    drop table if exists librairie.collection
+Hibernate: 
+    drop table if exists librairie.commande
+Hibernate: 
+    drop table if exists librairie.detailCommande
+Hibernate: 
+    drop table if exists librairie.detailCommande_commande
+Hibernate: 
+    drop table if exists librairie.detailLivraison
+Hibernate: 
+    drop table if exists librairie.detailLivraison_livraison
+Hibernate: 
+    drop table if exists librairie.detailNoteCredit
+Hibernate: 
+    drop table if exists librairie.detailNoteCredit_noteCredit
+Hibernate: 
+    drop table if exists librairie.detailRecompense
+Hibernate: 
+    drop table if exists librairie.detailRecompense_recompense
+Hibernate: 
+    drop table if exists librairie.detailVente
+Hibernate: 
+    drop table if exists librairie.edition
+Hibernate: 
+    drop table if exists librairie.facture
+Hibernate: 
+    drop table if exists librairie.format
+Hibernate: 
+    drop table if exists librairie.fournisseur
+Hibernate: 
+    drop table if exists librairie.genre
+Hibernate: 
+    drop table if exists librairie.livraison
+Hibernate: 
+    drop table if exists librairie.livraison_commande
+Hibernate: 
+    drop table if exists librairie.livre
+Hibernate: 
+    drop table if exists librairie.livre_auteur
+Hibernate: 
+    drop table if exists librairie.livre_genre
+Hibernate: 
+    drop table if exists librairie.noteCredit
+Hibernate: 
+    drop table if exists librairie.paiement
+Hibernate: 
+    drop table if exists librairie.pays
+Hibernate: 
+    drop table if exists librairie.personne
+Hibernate: 
+    drop table if exists librairie.recompense
+Hibernate: 
+    drop table if exists librairie.remise
+Hibernate: 
+    drop table if exists librairie.vendeur
+Hibernate: 
+    drop table if exists librairie.vente
+Hibernate: 
+    drop table if exists librairie.vente_detailVente
+Hibernate: 
+    drop table if exists counterIdPersonne
+Hibernate: 
+    create table librairie.adresse (
+        idAdresse integer not null auto_increment,
+        codePostal varchar(10) not null,
+        localite varchar(50) not null,
+        numero varchar(10) not null,
+        rue varchar(100) not null,
+        pays_idPays integer not null,
+        primary key (idAdresse)
+    )
+Hibernate: 
+    create table librairie.auteur (
+        idAuteur integer not null auto_increment,
+        dateDeces date,
+        dateNaissance date not null,
+        email varchar(100) not null,
+        nomAuteur varchar(50) not null,
+        prenomAuteur varchar(50) not null,
+        primary key (idAuteur)
+    )
+Hibernate: 
+    create table librairie.client (
+        id integer not null,
+        dateNaissancePersonne date not null,
+        emailPersonne varchar(100) not null,
+        nomPersonne varchar(50) not null,
+        prenomPersonne varchar(50) not null,
+        sexePersonne char(1) not null,
+        telephonePersonne varchar(20) not null,
+        adresse_idAdresse integer not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table librairie.collection (
+        idCollection integer not null auto_increment,
+        nomCollection varchar(50) not null,
+        primary key (idCollection)
+    )
+Hibernate: 
+    create table librairie.commande (
+        idCommande integer not null auto_increment,
+        dateCommande date not null,
+        dateLivraisonDemande date not null,
+        statut char(1) not null,
+        fournisseur_idFournisseur integer not null,
+        vendeur_idVendeur integer not null,
+        primary key (idCommande)
+    )
+Hibernate: 
+    create table librairie.detailCommande (
+        idDetailCommande integer not null auto_increment,
+        prixAchatReelHtva double precision not null,
+        quantiteCommande integer not null,
+        livre_idLivre integer not null,
+        primary key (idDetailCommande)
+    )
+Hibernate: 
+    create table librairie.detailCommande_commande (
+        detailCommande_idDetailCommande integer not null,
+        commande_idCommande integer not null,
+        primary key (commande_idCommande, detailCommande_idDetailCommande)
+    )
+Hibernate: 
+    create table librairie.detailLivraison (
+        idDetailLivraison integer not null auto_increment,
+        quantiteLivraison integer not null,
+        livre_idLivre integer not null,
+        primary key (idDetailLivraison)
+    )
+Hibernate: 
+    create table librairie.detailLivraison_livraison (
+        livraison_idLivraison integer not null,
+        detailLivraison_idDetailLivraison integer not null,
+        primary key (detailLivraison_idDetailLivraison, livraison_idLivraison)
+    )
+Hibernate: 
+    create table librairie.detailNoteCredit (
+        idDetailNoteCredit integer not null auto_increment,
+        prixHtva double precision not null,
+        quantiteNoteCredit integer not null,
+        livre_idLivre integer,
+        primary key (idDetailNoteCredit)
+    )
+Hibernate: 
+    create table librairie.detailNoteCredit_noteCredit (
+        noteCredit_idNoteCredit integer not null,
+        detailNoteCredit_idDetailNoteCredit integer not null,
+        primary key (detailNoteCredit_idDetailNoteCredit, noteCredit_idNoteCredit)
+    )
+Hibernate: 
+    create table librairie.detailRecompense (
+        idDetailRecompense integer not null auto_increment,
+        annee integer not null,
+        auteur_idAuteur integer not null,
+        primary key (idDetailRecompense)
+    )
+Hibernate: 
+    create table librairie.detailRecompense_recompense (
+        recompense_idRecompense integer not null,
+        detailRecompense_idDetailRecompense integer not null,
+        primary key (detailRecompense_idDetailRecompense, recompense_idRecompense)
+    )
+Hibernate: 
+    create table librairie.detailVente (
+        idDetailVente integer not null auto_increment,
+        prixVenteReelHtva double precision not null,
+        quantiteVente integer not null,
+        livre_idLivre integer not null,
+        primary key (idDetailVente)
+    )
+Hibernate: 
+    create table librairie.edition (
+        idEdition integer not null auto_increment,
+        nomEdition varchar(50) not null,
+        edition_idAdresse integer not null,
+        primary key (idEdition)
+    )
+Hibernate: 
+    create table librairie.facture (
+        idFacture integer not null auto_increment,
+        dateFacture date not null,
+        nrFacture varchar(50) not null,
+        fournisseur_idFournisseur integer not null,
+        primary key (idFacture)
+    )
+Hibernate: 
+    create table librairie.format (
+        idFormat integer not null auto_increment,
+        nomFormat varchar(20) not null,
+        primary key (idFormat)
+    )
+Hibernate: 
+    create table librairie.fournisseur (
+        idFournisseur integer not null auto_increment,
+        email varchar(100) not null,
+        fax varchar(20) not null,
+        formeJuridique varchar(20) not null,
+        nomFournisseur varchar(50) not null,
+        nrTva varchar(20) not null,
+        telephone varchar(20) not null,
+        fournisseur_idAdresse integer,
+        primary key (idFournisseur)
+    )
+Hibernate: 
+    create table librairie.genre (
+        idGenre integer not null auto_increment,
+        nomGenre varchar(50) not null,
+        primary key (idGenre)
+    )
+Hibernate: 
+    create table librairie.livraison (
+        idLivraison integer not null auto_increment,
+        dateLivraison date not null,
+        facture_idFacture integer not null,
+        primary key (idLivraison)
+    )
+Hibernate: 
+    create table librairie.livraison_commande (
+        livraison_idLivraison integer not null,
+        commande_idCommande integer not null,
+        primary key (commande_idCommande, livraison_idLivraison)
+    )
+Hibernate: 
+    create table librairie.livre (
+        idLivre integer not null auto_increment,
+        anneeSortie date not null,
+        description longtext not null,
+        isbn bigint not null,
+        prixAchatActuelHtva double precision not null,
+        prixVenteHtva double precision not null,
+        seuilMin integer not null,
+        sousTitre varchar(100),
+        stock integer not null,
+        titre varchar(100) not null,
+        collection_idCollection integer,
+        edition_idEdition integer not null,
+        format_idFormat integer not null,
+        primary key (idLivre)
+    )
+Hibernate: 
+    create table librairie.livre_auteur (
+        livre_idLivre integer not null,
+        auteur_idAuteur integer not null,
+        primary key (auteur_idAuteur, livre_idLivre)
+    )
+Hibernate: 
+    create table librairie.livre_genre (
+        livre_idLivre integer not null,
+        genre_idGenre integer not null,
+        primary key (genre_idGenre, livre_idLivre)
+    )
+Hibernate: 
+    create table librairie.noteCredit (
+        idNoteCredit integer not null auto_increment,
+        dateNoteCredit date not null,
+        defectueux tinyint not null,
+        invendu tinyint not null,
+        fournisseur_idFournisseur integer not null,
+        vendeur_idVendeur integer not null,
+        primary key (idNoteCredit)
+    )
+Hibernate: 
+    create table librairie.paiement (
+        idPaiement integer not null auto_increment,
+        datePaiement date not null,
+        montantVerse double precision not null,
+        facture_idFacture integer not null,
+        primary key (idPaiement)
+    )
+Hibernate: 
+    create table librairie.pays (
+        idPays integer not null auto_increment,
+        codeIsoPays varchar(10) not null,
+        nomPays varchar(50) not null,
+        primary key (idPays)
+    )
+Hibernate: 
+    create table librairie.personne (
+        id integer not null,
+        dateNaissancePersonne date not null,
+        emailPersonne varchar(100) not null,
+        nomPersonne varchar(50) not null,
+        prenomPersonne varchar(50) not null,
+        sexePersonne char(1) not null,
+        telephonePersonne varchar(20) not null,
+        adresse_idAdresse integer not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table librairie.recompense (
+        idRecompense integer not null auto_increment,
+        nomRecompense varchar(50) not null,
+        primary key (idRecompense)
+    )
+Hibernate: 
+    create table librairie.remise (
+        idRemise integer not null auto_increment,
+        dateDebutRemise date not null,
+        dateFinRemise date not null,
+        dateRemise date not null,
+        montantRemise double precision not null,
+        nbrAchat integer not null,
+        client_idClient integer not null,
+        primary key (idRemise)
+    )
+Hibernate: 
+    create table librairie.vendeur (
+        id integer not null,
+        dateNaissancePersonne date not null,
+        emailPersonne varchar(100) not null,
+        nomPersonne varchar(50) not null,
+        prenomPersonne varchar(50) not null,
+        sexePersonne char(1) not null,
+        telephonePersonne varchar(20) not null,
+        adresse_idAdresse integer not null,
+        login varchar(12) not null,
+        password varchar(44) not null,
+        responsable tinyint not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table librairie.vente (
+        idVente integer not null auto_increment,
+        dateVente date not null,
+        modePaiement char(1) not null,
+        nrVente varchar(50) not null,
+        client_idClient integer not null,
+        vendeur_idVendeur integer not null,
+        primary key (idVente)
+    )
+Hibernate: 
+    create table librairie.vente_detailVente (
+        vente_idVente integer not null,
+        detailVente_idDetailVente integer not null,
+        primary key (detailVente_idDetailVente, vente_idVente)
+    )
+Hibernate: 
+    alter table librairie.client 
+        add constraint UK_4gwkipvaowcurp34i4yxqk4m0 unique (emailPersonne)
+Hibernate: 
+    alter table librairie.fournisseur 
+        add constraint UK_jbgq4kotuud6g548jycag5qwp unique (email)
+Hibernate: 
+    alter table librairie.livre 
+        add constraint UK_9lix5phlv9fnqt4gsyu0qgb5 unique (isbn)
+Hibernate: 
+    alter table librairie.personne 
+        add constraint UK_dciah7j2usno96koji7pn5lej unique (emailPersonne)
+Hibernate: 
+    alter table librairie.vendeur 
+        add constraint UK_7kdv8ssqinkpdhfuqmqd2xyd3 unique (login, password)
+Hibernate: 
+    alter table librairie.vendeur 
+        add constraint UK_pyerxw288ayniq4rqfk6pu8e6 unique (emailPersonne)
+Hibernate: 
+    alter table librairie.adresse 
+        add index FK_o3pshmpp7efsl7igib5pkffr (pays_idPays), 
+        add constraint FK_o3pshmpp7efsl7igib5pkffr 
+        foreign key (pays_idPays) 
+        references librairie.pays (idPays)
+Hibernate: 
+    alter table librairie.client 
+        add index FK_dgge447lhnbfdytxmlwqdtaba (adresse_idAdresse), 
+        add constraint FK_dgge447lhnbfdytxmlwqdtaba 
+        foreign key (adresse_idAdresse) 
+        references librairie.adresse (idAdresse)
+Hibernate: 
+    alter table librairie.commande 
+        add index FK_jskvpsn1q2p5yaq4wdq4eb2vq (fournisseur_idFournisseur), 
+        add constraint FK_jskvpsn1q2p5yaq4wdq4eb2vq 
+        foreign key (fournisseur_idFournisseur) 
+        references librairie.fournisseur (idFournisseur)
+Hibernate: 
+    alter table librairie.commande 
+        add index FK_qdbsi7bingv308qsm710jcdyl (vendeur_idVendeur), 
+        add constraint FK_qdbsi7bingv308qsm710jcdyl 
+        foreign key (vendeur_idVendeur) 
+        references librairie.vendeur (id)
+Hibernate: 
+    alter table librairie.detailCommande 
+        add index FK_f6fjdi5jeppdbqi8wqb9m20mv (livre_idLivre), 
+        add constraint FK_f6fjdi5jeppdbqi8wqb9m20mv 
+        foreign key (livre_idLivre) 
+        references librairie.livre (idLivre)
+Hibernate: 
+    alter table librairie.detailCommande_commande 
+        add index FK_4gy2ew2ntmeea6uomn7sgdqd7 (commande_idCommande), 
+        add constraint FK_4gy2ew2ntmeea6uomn7sgdqd7 
+        foreign key (commande_idCommande) 
+        references librairie.commande (idCommande)
+Hibernate: 
+    alter table librairie.detailCommande_commande 
+        add index FK_n5au6kpanw6mglka8qwf78pt4 (detailCommande_idDetailCommande), 
+        add constraint FK_n5au6kpanw6mglka8qwf78pt4 
+        foreign key (detailCommande_idDetailCommande) 
+        references librairie.detailCommande (idDetailCommande)
+Hibernate: 
+    alter table librairie.detailLivraison 
+        add index FK_itdectm6x93gproutbwu3fse4 (livre_idLivre), 
+        add constraint FK_itdectm6x93gproutbwu3fse4 
+        foreign key (livre_idLivre) 
+        references librairie.livre (idLivre)
+Hibernate: 
+    alter table librairie.detailLivraison_livraison 
+        add index FK_8yqjfkdhj3sqhxjearp3ln5rf (detailLivraison_idDetailLivraison), 
+        add constraint FK_8yqjfkdhj3sqhxjearp3ln5rf 
+        foreign key (detailLivraison_idDetailLivraison) 
+        references librairie.detailLivraison (idDetailLivraison)
+Hibernate: 
+    alter table librairie.detailLivraison_livraison 
+        add index FK_hdusvn5hhqc9he9iob2fk201q (livraison_idLivraison), 
+        add constraint FK_hdusvn5hhqc9he9iob2fk201q 
+        foreign key (livraison_idLivraison) 
+        references librairie.livraison (idLivraison)
+Hibernate: 
+    alter table librairie.detailNoteCredit 
+        add index FK_foj309uw4i2h0lb6riqrykxa0 (livre_idLivre), 
+        add constraint FK_foj309uw4i2h0lb6riqrykxa0 
+        foreign key (livre_idLivre) 
+        references librairie.livre (idLivre)
+Hibernate: 
+    alter table librairie.detailNoteCredit_noteCredit 
+        add index FK_isgvwc1nlicjp8rc65kjodcq5 (detailNoteCredit_idDetailNoteCredit), 
+        add constraint FK_isgvwc1nlicjp8rc65kjodcq5 
+        foreign key (detailNoteCredit_idDetailNoteCredit) 
+        references librairie.detailNoteCredit (idDetailNoteCredit)
+Hibernate: 
+    alter table librairie.detailNoteCredit_noteCredit 
+        add index FK_ggmtc019c9usedsd7qk1778jk (noteCredit_idNoteCredit), 
+        add constraint FK_ggmtc019c9usedsd7qk1778jk 
+        foreign key (noteCredit_idNoteCredit) 
+        references librairie.noteCredit (idNoteCredit)
+Hibernate: 
+    alter table librairie.detailRecompense 
+        add index FK_cfn7ap2ok0kumhggy5qcjkbcc (auteur_idAuteur), 
+        add constraint FK_cfn7ap2ok0kumhggy5qcjkbcc 
+        foreign key (auteur_idAuteur) 
+        references librairie.auteur (idAuteur)
+Hibernate: 
+    alter table librairie.detailRecompense_recompense 
+        add index FK_3f8bddkvb82b48g2n3frymdbj (detailRecompense_idDetailRecompense), 
+        add constraint FK_3f8bddkvb82b48g2n3frymdbj 
+        foreign key (detailRecompense_idDetailRecompense) 
+        references librairie.detailRecompense (idDetailRecompense)
+Hibernate: 
+    alter table librairie.detailRecompense_recompense 
+        add index FK_dguidy4cvn8ngjg2fll15k0yy (recompense_idRecompense), 
+        add constraint FK_dguidy4cvn8ngjg2fll15k0yy 
+        foreign key (recompense_idRecompense) 
+        references librairie.recompense (idRecompense)
+Hibernate: 
+    alter table librairie.detailVente 
+        add index FK_d72sj7cusi4h56h1n5raj862r (livre_idLivre), 
+        add constraint FK_d72sj7cusi4h56h1n5raj862r 
+        foreign key (livre_idLivre) 
+        references librairie.livre (idLivre)
+Hibernate: 
+    alter table librairie.edition 
+        add index FK_fb6cntl5kip4vw06ymf8xwg61 (edition_idAdresse), 
+        add constraint FK_fb6cntl5kip4vw06ymf8xwg61 
+        foreign key (edition_idAdresse) 
+        references librairie.adresse (idAdresse)
+Hibernate: 
+    alter table librairie.facture 
+        add index FK_br2gmim9on4s8vjlrpus2ta8y (fournisseur_idFournisseur), 
+        add constraint FK_br2gmim9on4s8vjlrpus2ta8y 
+        foreign key (fournisseur_idFournisseur) 
+        references librairie.fournisseur (idFournisseur)
+Hibernate: 
+    alter table librairie.fournisseur 
+        add index FK_jgwv13n1m3fqw77m8ogp86vrf (fournisseur_idAdresse), 
+        add constraint FK_jgwv13n1m3fqw77m8ogp86vrf 
+        foreign key (fournisseur_idAdresse) 
+        references librairie.adresse (idAdresse)
+Hibernate: 
+    alter table librairie.livraison 
+        add index FK_go27oeql189xgvgoo9wlt4v12 (facture_idFacture), 
+        add constraint FK_go27oeql189xgvgoo9wlt4v12 
+        foreign key (facture_idFacture) 
+        references librairie.facture (idFacture)
+Hibernate: 
+    alter table librairie.livraison_commande 
+        add index FK_e3w6j8dmhn29aek7bjddslduv (commande_idCommande), 
+        add constraint FK_e3w6j8dmhn29aek7bjddslduv 
+        foreign key (commande_idCommande) 
+        references librairie.commande (idCommande)
+Hibernate: 
+    alter table librairie.livraison_commande 
+        add index FK_2ejs8u0l5enp2f90gy8t6muur (livraison_idLivraison), 
+        add constraint FK_2ejs8u0l5enp2f90gy8t6muur 
+        foreign key (livraison_idLivraison) 
+        references librairie.livraison (idLivraison)
+Hibernate: 
+    alter table librairie.livre 
+        add index FK_kphdtnmehc59rxaq6t0vvu986 (collection_idCollection), 
+        add constraint FK_kphdtnmehc59rxaq6t0vvu986 
+        foreign key (collection_idCollection) 
+        references librairie.collection (idCollection)
+Hibernate: 
+    alter table librairie.livre 
+        add index FK_9tp3teyyumxm6tcut2u04vxvt (edition_idEdition), 
+        add constraint FK_9tp3teyyumxm6tcut2u04vxvt 
+        foreign key (edition_idEdition) 
+        references librairie.edition (idEdition)
+Hibernate: 
+    alter table librairie.livre 
+        add index FK_c526q32magwicsr30yyf76dyw (format_idFormat), 
+        add constraint FK_c526q32magwicsr30yyf76dyw 
+        foreign key (format_idFormat) 
+        references librairie.format (idFormat)
+Hibernate: 
+    alter table librairie.livre_auteur 
+        add index FK_3kmgevdd444j7xfgltmyjmn48 (auteur_idAuteur), 
+        add constraint FK_3kmgevdd444j7xfgltmyjmn48 
+        foreign key (auteur_idAuteur) 
+        references librairie.auteur (idAuteur)
+Hibernate: 
+    alter table librairie.livre_auteur 
+        add index FK_m3s7dlxubrp2gvqf1gstxie72 (livre_idLivre), 
+        add constraint FK_m3s7dlxubrp2gvqf1gstxie72 
+        foreign key (livre_idLivre) 
+        references librairie.livre (idLivre)
+Hibernate: 
+    alter table librairie.livre_genre 
+        add index FK_s8foa6oj93xmd9cs577juq01 (genre_idGenre), 
+        add constraint FK_s8foa6oj93xmd9cs577juq01 
+        foreign key (genre_idGenre) 
+        references librairie.genre (idGenre)
+Hibernate: 
+    alter table librairie.livre_genre 
+        add index FK_6f5yrvudv959968kdutjcc8mb (livre_idLivre), 
+        add constraint FK_6f5yrvudv959968kdutjcc8mb 
+        foreign key (livre_idLivre) 
+        references librairie.livre (idLivre)
+Hibernate: 
+    alter table librairie.noteCredit 
+        add index FK_ifeqdonvb6ogyjhyb56cx4lyg (fournisseur_idFournisseur), 
+        add constraint FK_ifeqdonvb6ogyjhyb56cx4lyg 
+        foreign key (fournisseur_idFournisseur) 
+        references librairie.fournisseur (idFournisseur)
+Hibernate: 
+    alter table librairie.noteCredit 
+        add index FK_66y2ajmtad0r2572pfimg50hg (vendeur_idVendeur), 
+        add constraint FK_66y2ajmtad0r2572pfimg50hg 
+        foreign key (vendeur_idVendeur) 
+        references librairie.vendeur (id)
+Hibernate: 
+    alter table librairie.paiement 
+        add index FK_byij74g4riqchc6p2lim6v223 (facture_idFacture), 
+        add constraint FK_byij74g4riqchc6p2lim6v223 
+        foreign key (facture_idFacture) 
+        references librairie.facture (idFacture)
+Hibernate: 
+    alter table librairie.personne 
+        add index FK_7bxe7asbda198iexna88tmi02 (adresse_idAdresse), 
+        add constraint FK_7bxe7asbda198iexna88tmi02 
+        foreign key (adresse_idAdresse) 
+        references librairie.adresse (idAdresse)
+Hibernate: 
+    alter table librairie.remise 
+        add index FK_9hu4jans70b98y8jqrcfcai0q (client_idClient), 
+        add constraint FK_9hu4jans70b98y8jqrcfcai0q 
+        foreign key (client_idClient) 
+        references librairie.client (id)
+Hibernate: 
+    alter table librairie.vendeur 
+        add index FK_c9w5ssmxhww6m06l4h3ym9aid (adresse_idAdresse), 
+        add constraint FK_c9w5ssmxhww6m06l4h3ym9aid 
+        foreign key (adresse_idAdresse) 
+        references librairie.adresse (idAdresse)
+Hibernate: 
+    alter table librairie.vente 
+        add index FK_b1rxd1ova3y2ksh4bunbcquro (client_idClient), 
+        add constraint FK_b1rxd1ova3y2ksh4bunbcquro 
+        foreign key (client_idClient) 
+        references librairie.client (id)
+Hibernate: 
+    alter table librairie.vente 
+        add index FK_alpwpymcv8xxqljtu1ek7vv05 (vendeur_idVendeur), 
+        add constraint FK_alpwpymcv8xxqljtu1ek7vv05 
+        foreign key (vendeur_idVendeur) 
+        references librairie.vendeur (id)
+Hibernate: 
+    alter table librairie.vente_detailVente 
+        add index FK_gd4ub21i86w538ypdvlq9js5d (detailVente_idDetailVente), 
+        add constraint FK_gd4ub21i86w538ypdvlq9js5d 
+        foreign key (detailVente_idDetailVente) 
+        references librairie.detailVente (idDetailVente)
+Hibernate: 
+    alter table librairie.vente_detailVente 
+        add index FK_mxo51fed99okss3cckw4ll73v (vente_idVente), 
+        add constraint FK_mxo51fed99okss3cckw4ll73v 
+        foreign key (vente_idVente) 
+        references librairie.vente (idVente)
+Hibernate: 
+    create table counterIdPersonne (
+         CounterName varchar(255),
+         CounterValue integer 
+    ) 
+mai 01, 2014 8:07:36 AM org.hibernate.tool.hbm2ddl.SchemaExport execute
+INFO: HHH000230: Schema export complete
