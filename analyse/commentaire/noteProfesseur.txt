@@ -1,0 +1,9 @@
+1 mai 2014
+création DB à partir classes avec annotations Hibernate ok
+reverse structure database avec mysql workbench ok
+
+A faire
+remettre en ordre les entités dans le modèle workbench
+(afficher attributs + index)
+faire une copie écran ou imprimer en A3 (page setup) vers pdf
+et mettre pdf à disposition
