@@ -1,0 +1,12 @@
+window_sizes 1920 889 450 1350 634 82
+show_stereotypes
+selected attribute_ref 128770 // annee
+open
+  class_ref 128002 // Auteur
+  class_ref 128130 // Recompense
+  class_ref 128258 // Nomination
+  class_ref 128386 // Auteur2
+  class_ref 128514 // Recompense2
+  class_ref 128642 // Nomination2
+end
+end
