@@ -22,7 +22,9 @@ import javax.swing.border.TitledBorder;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import pojo.Adresse;
 import pojo.Client;
@@ -30,7 +32,7 @@ import pojo.Pays;
 import test.HibernateUtil;
 
 public class SousPanelInfoAdresse extends JPanel {
-	private static List<Pays> lstPays = null;
+	private List<Pays> lstPays = null;
 	
 	private GridBagConstraints gbc = null;
 	private JLabel lblRue = null;
@@ -111,11 +113,9 @@ public class SousPanelInfoAdresse extends JPanel {
 		txtPays = new JComboBox<String>();
 		txtPays.setPreferredSize(new Dimension(400, 20));
 		Session session = HibernateUtil.instance().openSession();
-		if (lstPays == null){
-			lstPays = session.createQuery("FROM Pays ORDER BY nomPays").list();
-			for(Pays p : lstPays){
-				txtPays.addItem(p.getNomPays());
-			}
+		lstPays = session.createCriteria(Pays.class).list();
+		for(Pays p : lstPays){
+			txtPays.addItem(p.getNomPays());
 		}		
 		txtPays.setSelectedIndex(-1);
 		this.add(txtPays, gbc);
@@ -195,7 +195,9 @@ public class SousPanelInfoAdresse extends JPanel {
 		pays = new Pays();
 		try{
 			tx = session.beginTransaction();
-			pays = (Pays) session.createQuery("FROM Pays WHERE nomPays = ?").setString(0, txtPays.getSelectedItem().toString()).uniqueResult();
+			pays = (Pays) session.createCriteria(Pays.class)
+					.add(Restrictions.eq("nomPays", txtPays.getSelectedItem().toString()))
+					.uniqueResult();
 			
 			adresse.setRue( txtRue.getText() );
 			adresse.setNumero( txtNumero.getText() );

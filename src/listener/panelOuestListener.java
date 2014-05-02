@@ -11,18 +11,14 @@ import javax.swing.JPanel;
 
 public class panelOuestListener implements ActionListener{
 	private int change;
-	private JPanel pnlCentre = null;
-	private JPanel pnlRaz = null;
 	
-	public panelOuestListener(JPanel panel, int i){
-		this.pnlCentre = panel;
+	public panelOuestListener(int i){
 		this.change = i;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((PanelCentre)pnlCentre).remiseZero();
-		((PanelCentre)pnlCentre).changeContenu(change);
+		PanelCentre.changeContenu(change);
 	}
 
 }

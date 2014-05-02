@@ -35,34 +35,34 @@ public class PanelOuest extends JPanel {
 		this.setBackground(Color.WHITE);
 		
 		btnAccueil = new JButton("Accueil");
-		btnAccueil.addActionListener(new panelOuestListener(panel, 0));
+		btnAccueil.addActionListener(new panelOuestListener(0));
 		this.add(btnAccueil);
 		
 		btnVente = new JButton("Vente");
-		btnVente.addActionListener(new panelOuestListener(panel, 1));
+		btnVente.addActionListener(new panelOuestListener(1));
 		this.add(btnVente);
 		
 		btnAchat = new JButton("Achat");
 		btnAchat.setEnabled(responsable);
-		btnAchat.addActionListener(new panelOuestListener(panel, 2));
+		btnAchat.addActionListener(new panelOuestListener(2));
 		this.add(btnAchat);
 		
 		btnClient = new JButton("Client");
-		btnClient.addActionListener(new panelOuestListener(panel, 3));
+		btnClient.addActionListener(new panelOuestListener(3));
 		this.add(btnClient);
 		
 		btnFournisseur = new JButton("Fournisseur");
 		btnFournisseur.setEnabled(responsable);
-		btnFournisseur.addActionListener(new panelOuestListener(panel, 4));
+		btnFournisseur.addActionListener(new panelOuestListener(4));
 		this.add(btnFournisseur);
 		
 		btnLivre = new JButton("Livre");
-		btnLivre.addActionListener(new panelOuestListener(panel, 5));
+		btnLivre.addActionListener(new panelOuestListener(5));
 		this.add(btnLivre);
 		
 		btnVendeur = new JButton("Vendeur");
 		btnVendeur.setEnabled(responsable);
-		btnVendeur.addActionListener(new panelOuestListener(panel, 6));
+		btnVendeur.addActionListener(new panelOuestListener(6));
 		this.add(btnVendeur);
 	}
 	
