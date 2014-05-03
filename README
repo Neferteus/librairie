@@ -3,7 +3,7 @@ Librairie
 Durand Ludovic
 Licence GPL3
 1. Au lancement de l'application, pour se connecter en tant que :
-	- responsable :	- Login : nobody
-					- Password : nobody
-	- vendeur :		- Login : emral
-					- Password : emral
+	- responsable :	- Login : admin
+					- Password : admin
+	- vendeur :		- Login : vendeur
+					- Password : vendeur
