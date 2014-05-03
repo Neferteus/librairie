@@ -17,6 +17,7 @@ Mise à jour:
 ------------
 	03/05/2014:
 		- Ajout d'un responsable et d'un vendeur.
+		- Changement des relations entre les tables Auteur, DetailRecompense et Recompense. Mise à jour de la DB.
 		- Mise à disposition du code sql comprenant :
 			- Integration des pays.
 			- Integration des formats.
