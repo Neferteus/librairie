@@ -2,8 +2,24 @@
 Librairie
 Durand Ludovic
 Licence GPL3
+
+Fonctionnement application :
+----------------------------
 1. Au lancement de l'application, pour se connecter en tant que :
-	- responsable :	- Login : admin
-					- Password : admin
-	- vendeur :		- Login : vendeur
-					- Password : vendeur
+	- responsable (accès total):
+		- Login : admin
+		- Password : admin
+	- vendeur (accès restreint):
+		- Login : vendeur
+		- Password : vendeur
+		
+Mise à jour:
+------------
+	03/05/2014:
+		- Ajout d'un responsable et d'un vendeur.
+		- Mise à disposition du code sql comprenant :
+			- Integration des pays.
+			- Integration des formats.
+			- Integration des genres.
+			- Un responsable.
+			- Un vendeur.
