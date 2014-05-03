@@ -24,10 +24,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import connexion.HibernateUtil;
 import outil.CryptageMdP;
 import pojo.Pays;
 import pojo.Vendeur;
-import test.HibernateUtil;
 
 public class DialogConnexion extends JDialog {
 	private Session session = HibernateUtil.instance().openSession();
@@ -108,12 +108,12 @@ public class DialogConnexion extends JDialog {
 	}
 	
 	public byte rechercheVendeur(){
-		String pwTmp = null;
-		
-		Vendeur vendeur = null;
-		vendeur = new Vendeur();
+		String pwTmp = null;		
+		Vendeur vendeur = null;		
 		Transaction tx = null;
+		
 		try{
+			vendeur = new Vendeur();
 			tx = session.beginTransaction();
 			
 			pwTmp = new String(txtMotDePasse.getPassword());
@@ -131,14 +131,11 @@ public class DialogConnexion extends JDialog {
 		
 		if(vendeur != null){
 			this.dispose();
+			return vendeur.getResponsable();
 		}else{
 			JOptionPane.showMessageDialog(null, "Login et/ou password invalide !");
 		}
-		if (vendeur != null){
-			return vendeur.getResponsable();
-		}else{
-			return 0;
-		}
+		return 0;
 		
 	}
 

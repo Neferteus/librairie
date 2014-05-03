@@ -23,11 +23,11 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import connexion.HibernateUtil;
 import outil.CryptageMdP;
 import pojo.Adresse;
 import pojo.Client;
 import pojo.Vendeur;
-import test.HibernateUtil;
 
 public class SousPanelInfoPersonnel extends JPanel{
 	private boolean actif = false;		
@@ -463,4 +463,5 @@ public class SousPanelInfoPersonnel extends JPanel{
 	public JTextField getTxtNom() {
 		return txtNom;
 	}
+
 }

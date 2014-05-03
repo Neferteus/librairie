@@ -26,10 +26,10 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import connexion.HibernateUtil;
 import pojo.Adresse;
 import pojo.Client;
 import pojo.Pays;
-import test.HibernateUtil;
 
 public class SousPanelInfoAdresse extends JPanel {
 	private List<Pays> lstPays = null;
@@ -230,4 +230,5 @@ public class SousPanelInfoAdresse extends JPanel {
 		lblPays.setForeground(Color.BLACK);
 		txtPays.setSelectedIndex(-1);
 	}
+
 }

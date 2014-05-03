@@ -24,12 +24,12 @@ import model.ModelTextField;
 
 import org.hibernate.Session;
 
+import connexion.HibernateUtil;
 import pojo.Auteur;
 import pojo.Collection;
 import pojo.Edition;
 import pojo.Format;
 import pojo.Genre;
-import test.HibernateUtil;
 
 public class PanelLivre extends JPanel {
 	Session session = null;

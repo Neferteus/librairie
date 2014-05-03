@@ -14,7 +14,6 @@ public class PanelVendeur extends JPanel {
 	private GridBagConstraints gbc = null;
 	private JPanel pnlInfoPerso = null;
 	private JPanel pnlAdresse = null;
-	private JPanel pnlInfoLogin = null;
 	private JPanel pnlBouton = null;
 	private JButton btnRechercher = null;
 	private JButton btnEnregistrer = null;

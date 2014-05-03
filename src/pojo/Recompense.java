@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,11 +26,7 @@ public class Recompense implements Serializable {
 	private Integer idRecompense = 0;
 	@Column(name = "nomRecompense", nullable = false, length = 50)
 	private String nomRecompense = null;
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "detailRecompense_recompense", catalog = "librairie", joinColumns = {
-			@JoinColumn(name = "recompense_idRecompense", nullable = false, updatable = false) }, inverseJoinColumns = {
-			@JoinColumn(name = "detailRecompense_idDetailRecompense", nullable = false, updatable = false)
-	})
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "recompense")
 	private Set<DetailRecompense> detailRecompenses = new HashSet<DetailRecompense>(0);
 
 	public Recompense(){

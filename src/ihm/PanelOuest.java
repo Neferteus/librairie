@@ -1,14 +1,13 @@
 package ihm;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import listener.panelOuestListener;
+import model.BoutonPanelOuest;
 
 public class PanelOuest extends JPanel {
 	private boolean responsable = false;
@@ -32,38 +31,35 @@ public class PanelOuest extends JPanel {
 	private void build() {
 		gl = new GridLayout(7, 1, 10, 10);
 		this.setLayout(gl);
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.DARK_GRAY);
 		
-		btnAccueil = new JButton("Accueil");
-		btnAccueil.addActionListener(new panelOuestListener(0));
+		btnAccueil = new BoutonPanelOuest("Accueil","images/livre.gif", 0);
 		this.add(btnAccueil);
 		
-		btnVente = new JButton("Vente");
-		btnVente.addActionListener(new panelOuestListener(1));
-		this.add(btnVente);
-		
-		btnAchat = new JButton("Achat");
+		btnAchat = new BoutonPanelOuest("Achat","images/livre.gif", 2);
 		btnAchat.setEnabled(responsable);
-		btnAchat.addActionListener(new panelOuestListener(2));
+		btnAchat.setVisible(responsable);
 		this.add(btnAchat);
 		
-		btnClient = new JButton("Client");
-		btnClient.addActionListener(new panelOuestListener(3));
-		this.add(btnClient);
-		
-		btnFournisseur = new JButton("Fournisseur");
+		btnVente = new BoutonPanelOuest("Vente","images/livre.gif", 1);
+		this.add(btnVente);
+
+		btnFournisseur = new BoutonPanelOuest("Fournisseur","images/livre.gif", 4);
 		btnFournisseur.setEnabled(responsable);
-		btnFournisseur.addActionListener(new panelOuestListener(4));
+		btnFournisseur.setVisible(responsable);
 		this.add(btnFournisseur);
 		
-		btnLivre = new JButton("Livre");
-		btnLivre.addActionListener(new panelOuestListener(5));
-		this.add(btnLivre);
+		btnClient = new BoutonPanelOuest("Client","images/livre.gif", 3);
+		this.add(btnClient);
 		
-		btnVendeur = new JButton("Vendeur");
+		btnVendeur = new BoutonPanelOuest("Vendeur","images/livre.gif", 6);
 		btnVendeur.setEnabled(responsable);
-		btnVendeur.addActionListener(new panelOuestListener(6));
+		btnVendeur.setVisible(responsable);
 		this.add(btnVendeur);
+		
+		btnLivre = new BoutonPanelOuest("Livre","images/livre.gif", 5);
+		this.add(btnLivre);
+
 	}
 	
 }

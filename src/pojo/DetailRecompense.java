@@ -29,12 +29,9 @@ public class DetailRecompense implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "auteur_idAuteur", nullable = false)
 	private Auteur auteur;
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "detailRecompense_recompense", catalog = "librairie", joinColumns = {
-			@JoinColumn(name = "detailRecompense_idDetailRecompense", nullable = false, updatable = false) }, inverseJoinColumns = {
-			@JoinColumn(name = "recompense_idRecompense", nullable = false, updatable = false)
-	})
-	private Set<Recompense> recompenses = new HashSet<Recompense>(0);  
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "recompense_idRecompense", nullable = false)
+	private Recompense recompense;  
 	
 	public DetailRecompense(){
 		
@@ -64,12 +61,12 @@ public class DetailRecompense implements Serializable {
 		this.auteur = auteur;
 	}
 
-	public Set<Recompense> getRecompenses() {
-		return recompenses;
+	public Recompense getRecompense() {
+		return recompense;
 	}
-
-	public void setRecompenses(Set<Recompense> recompenses) {
-		this.recompenses = recompenses;
+	
+	public void setRecompense(Recompense recompense) {
+		this.recompense = recompense;
 	}
-
+	
 }

@@ -16,9 +16,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import connexion.HibernateUtil;
 import pojo.Client;
 import pojo.Vendeur;
-import test.HibernateUtil;
 
 public class PanelVendeurListener implements ActionListener {
 	private JPanel pnlInfoPerso = null;

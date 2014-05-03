@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-public class panelOuestListener implements ActionListener{
+public class PanelOuestListener implements ActionListener{
 	private int change;
 	
-	public panelOuestListener(int i){
+	public PanelOuestListener(int i){
 		this.change = i;
 	}
 

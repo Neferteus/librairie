@@ -18,8 +18,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import connexion.HibernateUtil;
 import pojo.Client;
-import test.HibernateUtil;
 
 public class PanelClient extends JPanel {
 	private JPanel panel = null;

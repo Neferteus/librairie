@@ -10,8 +10,8 @@ import javax.swing.JDialog;
 
 import org.hibernate.Session;
 
+import connexion.HibernateUtil;
 import pojo.Vendeur;
-import test.HibernateUtil;
 
 public class DialogConnexionListener implements ActionListener {
 	private JDialog dialogConnexion = null;

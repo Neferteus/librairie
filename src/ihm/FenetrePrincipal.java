@@ -1,41 +1,26 @@
 package ihm;
 
 import java.awt.BorderLayout;
-import java.awt.Dialog.ModalityType;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import test.HibernateUtil;
-
 public class FenetrePrincipal extends JFrame {
-	private Session session = HibernateUtil.instance().openSession();
-	private static boolean responsable = false;
-	private JFrame frame = null;
+	private static boolean responsable = true;
 	private JLabel labelNord = null;
 	private JPanel panelOuest = null;
 	private JPanel panelCentre = null;
 	private JScrollPane scrollCentre = null;
-	private JMenuBar menu = null;
-	private JDialog dialConnexion = null;
 	
 	public FenetrePrincipal(){
 		super();
-		this.frame = this;
 		build();
 	}
 	
@@ -50,10 +35,11 @@ public class FenetrePrincipal extends JFrame {
 				}
 			}
 		});
-		dialConnexion = new DialogConnexion();
 		
-		menu = new MenuPersonnel();
-		this.setJMenuBar(menu);
+		new DialogConnexion();
+		
+		this.setJMenuBar(new MenuPersonnel());
+		
 		labelNord = new LabelNord();
 		panelCentre = new PanelCentre();
 		scrollCentre = new JScrollPane(panelCentre);
@@ -64,16 +50,11 @@ public class FenetrePrincipal extends JFrame {
 		this.getContentPane().add(scrollCentre, BorderLayout.CENTER);
 		
 		this.setSize(new Dimension(700, 800));
-		// this.pack();
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		
 	}
-
-	public static boolean isResponsable() {
-		return responsable;
-	}
-
+	
 	public static void setResponsable(boolean responsable) {
 		FenetrePrincipal.responsable = responsable;
 	}

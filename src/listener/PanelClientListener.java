@@ -12,14 +12,11 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.event.internal.OnLockVisitor;
 
+import connexion.HibernateUtil;
 import pojo.Client;
-import pojo.Vendeur;
-import test.HibernateUtil;
 
 public class PanelClientListener implements ActionListener{
 	private JPanel pnlInfoPerso = null;
@@ -36,7 +33,6 @@ public class PanelClientListener implements ActionListener{
 			String recherche = "%".concat((((SousPanelInfoPersonnel)pnlInfoPerso).getTxtNom().getText().trim())).concat("%");
 			String[] titre = {"Id", "Nom", "Prenom", "Date de naissance", "Civilité"};
 			Object[][] triClient = null;
-			Transaction tx = null;
 			
 			Session session = HibernateUtil.instance().openSession();
 			
@@ -54,7 +50,7 @@ public class PanelClientListener implements ActionListener{
 						triClient[i][4] = c.getSexePersonne();
 						i ++;
 					}
-					JDialog dialogRecherche = new DialogRecherche(titre, triClient);
+					new DialogRecherche(titre, triClient);
 				}else{
 					JOptionPane.showMessageDialog(null, "Pas de clients contenant ces caractères !");
 				}

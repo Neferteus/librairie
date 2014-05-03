@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 import org.hibernate.Session;
 
-import test.HibernateUtil;
+import connexion.HibernateUtil;
 
 public class DialogGenre extends JDialog {
 	private Session session = null;
